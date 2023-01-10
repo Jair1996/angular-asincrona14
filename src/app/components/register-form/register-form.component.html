@@ -1,0 +1,62 @@
+<section class="mt-5">
+  <div class="mb-4">
+    <h1 class="text-primary">Registro de Personas</h1>
+  </div>
+  <app-message-form></app-message-form>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="sendMessage()"
+    autocomplete="off"
+  >
+    <div class="mb-3">
+      <label for="txtNombre" class="form-label">Nombre:</label>
+      <input
+        formControlName="nombre"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="isTheFieldInvalid('nombre')"
+        id="txtNombre"
+      />
+      <div class="invalid-feedback">Por favor ingrese un nombre válido</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="txtNombre" class="form-label">DNI:</label>
+      <input
+        formControlName="dni"
+        type="text"
+        class="form-control is-invalid"
+        [class.is-invalid]="isTheFieldInvalid('dni')"
+        id="txtNombre"
+      />
+      <div class="invalid-feedback">
+        Por favor ingrese un DNI válido 8 dígitos
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="txtNombre" class="form-label">Estado Civil:</label>
+      <select
+        formControlName="estadoCivil"
+        class="form-select is-invalid"
+        [class.is-invalid]="isTheFieldInvalid('estadoCivil')"
+      >
+        <option value="" disabled>Seleccione su estado civil</option>
+        <option value="soltero">Soltero</option>
+        <option value="conviviente">Conviviente</option>
+        <option value="casado">Casado</option>
+        <option value="viudo">Viudo</option>
+        <option value="divorciado">Divorciado</option>
+      </select>
+      <div class="invalid-feedback">Por favor seleccione una opción</div>
+    </div>
+
+    <button
+      [disabled]="registerForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Enviar
+    </button>
+  </form>
+</section>
