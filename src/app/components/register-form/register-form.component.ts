@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Person } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-register-form',
@@ -19,9 +20,17 @@ export class RegisterFormComponent {
     estadoCivil: ['', [Validators.required]],
   });
 
+  showMessage: boolean = false;
+
+  person!: Person;
+
   constructor(private fb: FormBuilder) {}
 
-  sendMessage() {}
+  sendMessage() {
+    this.person = { ...this.registerForm.value };
+    this.showMessage = true;
+    this.registerForm.reset();
+  }
 
   isTheFieldInvalid(control: string) {
     return (

@@ -2,7 +2,7 @@
   <div class="mb-4">
     <h1 class="text-primary">Registro de Personas</h1>
   </div>
-  <app-message-form></app-message-form>
+  <app-message-form *ngIf="showMessage" [person]="person"></app-message-form>
   <form
     [formGroup]="registerForm"
     (ngSubmit)="sendMessage()"
